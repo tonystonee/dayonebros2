@@ -1,0 +1,381 @@
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+@import url(http://fonts.googleapis.com/css?family=Poppins);
+html,body{
+	background:#ebebeb;
+	min-height:100%;
+	width:100%;
+}
+body{
+	text-align:left;
+	font-family: 'Poppins', sans-serif;
+	
+}
+/*header*/
+#header{
+	position:relative;/*make relevant*/
+	z-index:100;
+	
+	height:61px;
+	background:white;
+	box-shadow: 0 1px 20px rgba(0,0,0,.1);
+	-webkit-box-shadow: 0 1px 20px rgba(0,0,0,.1);
+	-moz-box-shadow: 0 1px 20px rgba(0,0,0,.1);
+}
+
+.navbar ul{
+	list-style-type:none;
+	display:inline-block;
+	z-index:100;
+}
+.navbar li{
+	float:left;
+	
+}
+.navbar a:link, .navbar a:visited{
+	display:block;
+	padding:20px 10px;
+	text-decoration:none;
+	color:#29004A;
+}
+.navbar a:hover, .navbar a:active{
+	background-color:#E3E3E3;	
+}
+.nav-toggle{
+	display:none;
+	padding:7px 5px;
+	float:right;
+	margin-right:1.5%;
+	margin-top:10px;
+	cursor:pointer;
+}
+.nav-toggle:hover {
+	border-color:#D6D6D6;
+}
+.nav-toggle:hover .bar{
+	background:#D6D6D6;
+}
+.nav-toggle .bar{
+	height:5px;
+	width:30px;
+	display:block;
+	background:#4d4d4d;
+	border-radius:50px;
+	margin:2px 0;
+}
+/*template*/
+h1,h2,h3,h4,h5,h6{
+	font-family: 'Open Sans', sans-serif;
+}
+.page{
+	width:1290px;
+	margin:auto;
+}
+section.page{
+	position:static;
+	z-index:-1;
+}
+.show{
+	font-weight:bold;
+	cursor:pointer;
+	display:inline-block;
+	padding:10px 0;
+}
+
+#page_title{
+	margin:10px 0 ;
+	
+}
+#page_title span{
+	font-size:18px;
+	color:Red;
+}
+#button{
+display:block;
+padding:10px 10px;
+font-family:'Yanone Kaffeesatz',sans-serif;
+font-size:34px;
+cursor:pointer;
+margin:5px 0;
+float:right;
+margin-left:10px;
+}
+.col{
+	float:left;
+}
+.player{
+	width:100%;
+	height:515px;
+}
+.player iframe{
+	width:100%;
+	height:100%;
+}
+.span8{
+	width:65%;
+	margin:0 0.5%;
+}
+.span4{
+	width:33%;
+	margin:0 0.5%;
+}
+.span12{
+	margin:0 auto;
+}
+.title{
+	text-transform:capitalize;
+	padding:10px 0;
+	min-height:38px;
+}
+.box{
+	display:block;
+	box-shadow: 0 1px 2px rgba(0,0,0,.1);
+	background:white;
+	color:black;
+}
+.description{
+	margin:10px 0;
+	padding:5px 10px;
+	min-height:82px;
+}
+.description p{	
+	font-size:12px;
+	text-transform:capitalize;
+	white-space:pre-line; /*preserve text formatting*/
+}
+.top_ten{
+	padding:5px 10px;
+}
+.ads{
+	padding:10px 0;
+	text-align:center;
+	margin-top:15px;
+	height:700px;
+	padding-bottom:25px;
+	overflow:hidden;
+	position:relative; /*for show button to work (abs positioning)*/
+
+}
+.ad2{
+	padding:10px;
+	margin:5px 0;
+}
+.show2{
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	font-weight:bold;
+	background:white;
+	width:100%;
+	display:block;
+	padding:10px;
+	cursor:pointer;
+	
+}
+
+.ads-extendo{
+	height:1737px;
+}
+
+.vidBox{
+	margin:2px 0;
+	cursor:pointer;
+	padding:10px 0;
+	text-align:left;
+}
+
+
+.vidBox img{
+	max-width:230px;
+	float:left;
+	margin-right:10px;
+	
+}
+.vidBox h2{
+	padding:2px 0;
+	color:#008CFF;
+	cursor:pointer;
+}
+.vidBox h2:hover{
+	text-decoration:underline
+}
+.vidBox p{
+	margin:5px 0;
+	font-size:14px;
+}
+
+.ads .vidBox h2{
+	color:black;
+}
+.ads .vidBox:hover h2{
+	color:#004CD9;
+}
+.ads .container{
+	padding:0 10px;
+}
+.ads .vidBox img{
+	width:120px;
+	height:70px;
+}
+.ads .vidBox p{
+	font-size:12px;
+}
+.ad-box{
+	height:306px;
+}
+.vidBox h2{
+	font-size:14px;
+}
+#footer{
+	background:white;
+	box-shadow: 0 -1px 20px rgba(0,0,0,.1);
+	-webkit-box-shadow: 0 -1px 20px rgba(0,0,0,.1);
+	-moz-box-shadow: 0 -1px 20px rgba(0,0,0,.1);
+	padding:30px 0;
+	margin-top:50px;
+}
+#footer a:link, #footer a:visited{
+	text-decoration:none;
+	color:#737373;
+}
+#footer a:hover, #footer a:active{
+	text-decoration:underline;
+}
+#footer .page {
+	text-align:center;
+}
+label{
+	display:block;
+}
+
+/*================== THEMES ============================== */
+.Film #header, .Film ul{	
+	background:#F00000;
+}
+
+.Film .navbar a:link, .Film .navbar a:visited{
+	color:#fff;
+}
+.Film .navbar a:hover, .Film .navbar a:active{
+	background-color:#FF9191;
+	color:#630000;
+}
+
+.Comedy #header, .Comedy ul li{
+	background:#2CA5FE;
+
+}
+.Comedy .navbar a:link, .Comedy .navbar a:visited{
+	color:#fff;
+}
+.Comedy .navbar a:hover, .Comedy .navbar a:active{
+	background-color:#D5EDFF;
+	color:#630000;
+}
+
+.Science #header, .Science ul li{
+	background:#00AA1A;
+}
+.Science .navbar a:link, .Science .navbar a:visited{
+	color:#fff;
+}
+.Science .navbar a:hover, .Science .navbar a:active{
+	background-color:#BAE8C1;
+	color:#037D00;
+}
+.beauty #header, .beauty ul li{
+	background:#FC6894;
+}
+.beauty .navbar a:link, .beauty .navbar a:visited{
+	color:#eee;
+}
+.beauty .navbar a:hover, .beauty .navbar a:active{
+	background-color:#FCC0D2;
+	color:#eee;
+}
+.Sports #header, .Sports ul li{
+	background:#27FF09;
+}
+.Sports .navbar a:link, .Sports .navbar a:visited{
+	color:#000;
+}
+.Sports .navbar a:hover, .Sports .navbar a:active{
+	background-color:#BEFFB5;
+	color:#000;
+}
+.Music #header, .Music ul li{
+	background:#1C43FF;
+}
+.Music .navbar a:link, .Music .navbar a:visited{
+	color:#fff;
+}
+.Music .navbar a:hover, .Music .navbar a:active{
+	background-color:#ACB6FC;
+	color:#fff;
+}
+.Education #header, .Education ul li{
+	background:#FFFB00;
+}
+.Education .navbar a:link, .Education .navbar a:visited{
+	color:black;
+}
+.Education .navbar a:hover, .Education .navbar a:active{
+	background:#FFFD9C;
+}
+.Pets #header, .Pets ul li{
+	background:#48FF00;
+}
+.Pets .navbar a:link, .Pets .navbar a:visited{
+	color:black;
+}
+.Pets .navbar a:hover, .Pets .navbar a:active{
+	background:#C8FFB3;
+}
+.Gaming #header, .Gaming ul li{
+	background:#FF0000;
+}
+.Gaming .navbar a:link, .Gaming .navbar a:visited{
+	color:white;
+}
+.Gaming .navbar a:hover, .Gaming .navbar a:active{
+	background:#FFA1A1;
+	
+}
+.Auto #header, .Auto ul li{
+	background:#E00000;
+}
+.Auto .navbar a:link, .Auto .navbar a:visited{
+	color:white;
+}
+.Auto .navbar a:hover, .Auto .navbar a:active{
+	background:#FFA1A1;
+	color:black;
+}
+.News #header, .News ul li{
+	background:#5CD1FF;
+}
+.News .navbar a:link, .News .navbar a:visited{
+	color:black;
+}
+.News .navbar a:hover, .News .navbar a:active{
+	background:#CFF1FF;
+	color:black;
+}
+.basic p, .basic ol, .basic h2{
+	line-height:2;
+}
+
+.basic ul, .basic ol{
+	list-style-position:inside;
+}
+
+.basic .form{
+	margin:auto;
+}
+.basic h3{
+	text-align:center;
+}
+.center {
+	text-align:center;
+}
+

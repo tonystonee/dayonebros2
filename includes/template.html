@@ -1,0 +1,61 @@
+<?php include("includes/header.html");?>
+<!--=================================Content =============================================-->
+				<h1 id="page_title"><?php echo $category?></h1>
+				<div class="content span8 col">
+					<div class="player">
+					</div>
+
+					<div class="description box">
+
+						<button id="button">RANDOM</button>
+						<h2 class="title">
+						</h2>
+						<p></p>
+						<span class="show"><b>Show More</b></span>
+					</div>
+
+					<div class="box top_ten">
+					<h1>Top Ten <?php echo $category;?> Videos Today</h1>
+					<div class="container">
+					<?php include 'includes/top_ten.php';?>
+					</div>
+					</div>
+				</div>
+
+				<div class="span4 col">
+				<div class="ads box">
+					<div class="ad-box">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<!-- dfgdsfg -->
+						<ins class="adsbygoogle"
+						     style="display:block"
+						     data-ad-client="ca-pub-3626536590226592"
+						     data-ad-slot="7120223227"
+						     data-ad-format="auto"></ins>
+						<script>
+						(adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</div>
+					<h2>Related Videos:</h2>
+
+					<div class="container">
+					</div>
+
+					<p class="show2">Show More</p>
+				</div>
+				<div class="box ad2">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<!-- dfgdsfg -->
+					<ins class="adsbygoogle"
+					     style="display:block"
+					     data-ad-client="ca-pub-3626536590226592"
+					     data-ad-slot="7120223227"
+					     data-ad-format="auto"></ins>
+					<script>
+					(adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</div>
+				</div>
+
+<!--=========================END CONTENT=============================-->
+<?php include("includes/footer.html");?>

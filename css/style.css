@@ -1,0 +1,118 @@
+@-moz-viewport {width:device-width; scale: 1; }
+@-ms-viewport {width:device-width; scale: 1; }
+@-o-viewport {width:device-width; scale: 1; }
+@-webkit-viewport {width:device-width; scale: 1; }
+@viewport {width:device-width; scale: 1; }
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+/*start browsers at same place-------------------------------------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+h1,h2,h3,h4,h5,h6{
+	font-weight:bold;
+}
+h1{
+	font-size:2em;
+}
+h2{
+	font-size:1.5em;
+}
+h3{
+`	font-size:1.17em;
+}
+h4{
+	font-size:1.33em;
+}
+h5{
+	font-size:0.83em
+}
+h6{
+	font-size:0.67em;
+}
+
+/*-----------------------------------------------------------------------*/
+
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body {
+	line-height: 1;
+	text-align:center
+}
+blockquote{
+	margin:16px 40px;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+html{
+	-moz-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	-webkit-text-size-adjust: 100%;
+	text-size-adjust: 100%;
+	margin:0;
+	padding:0;
+}
+
+
+
+
+
+
+
+.clear{
+	display:hidden;
+	clear:both;
+}
+
+/* @group Misc */
+.clearfix:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.clearfix {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .clearfix {height: 1%;}
+.clearfix {display: block;}
+/* End hide from IE-mac */
+/* @end */
