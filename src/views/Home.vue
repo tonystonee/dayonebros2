@@ -1,5 +1,5 @@
 <template>
-  <v-container fill-height>
+  <v-container>
     <player/>
   </v-container>
 </template>
