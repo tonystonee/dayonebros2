@@ -1,37 +1,51 @@
 <template>
     <v-layout row wrap>
-        <v-flex xs12>
+        <v-flex xs12 md8 class="pr-5">
             <div class="player">
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/EWguUJtesrs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
             </div>
-            <v-btn large round color="red" class="random-btn white--text ml-0 mb-0 px-3">
+            <v-btn large round color="red" class="random-btn white--text ml-0 mt-3 px-3">
                 <v-icon class="mr-2">cached</v-icon>
                 Random
             </v-btn>
+            <div class="my-3 white">
+                <v-expansion-panel>
+                    <v-layout>
+                        <h2 class="pa-3">Title</h2>
+                    </v-layout>
+                    <v-expansion-panel-content>
+                        <div slot="header">
+                            Show more
+                        </div>
+                        <v-card>
+                            <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-card-text>
+                        </v-card>
+                    </v-expansion-panel-content>
+                </v-expansion-panel>
+            </div>
         </v-flex>
-        <v-flex xs12 class="my-3 white">
-            <v-expansion-panel>
-                <v-layout>
-                    <h2 class="pa-3">Title</h2>
-                </v-layout>
-                <v-expansion-panel-content>
-                    <div slot="header">
-                        Show more
-                    </div>
-                    <v-card>
-                        <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</v-card-text>
-                    </v-card>
-                </v-expansion-panel-content>
-            </v-expansion-panel>
+        <v-flex xs12 md4>
+            <v-card>
+                <v-toolbar
+                color="red"
+                class="white--text"
+                dense
+                >   
+                <h2 class="headline">Top 10</h2>
+                </v-toolbar>
+                <div class="white pa-3">
+                    dasfsdf
+                </div>
+            </v-card>
         </v-flex>
     </v-layout>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-    mounted(){
-        
-    }
+
 }
 </script>
 
@@ -40,7 +54,7 @@ export default {
         letter-spacing: 5px;
     }
     .player iframe{
-        width: 100%;
-        height: 100%;
+        display: block;
+        max-width: 100%;
     }
 </style>
