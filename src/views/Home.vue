@@ -15,9 +15,12 @@
                 <v-spacer></v-spacer>
                 <v-icon color="white">whatshot</v-icon>
                 </v-toolbar>
-                <div class="white pa-3">
-                    dasfsdf
-                </div>
+                <v-layout class="white pa-5" justify-center>
+                    <v-progress-circular
+                        indeterminate
+                        color="primary"
+                    ></v-progress-circular>
+                </v-layout>
             </v-card>
         </v-flex>
     </v-layout>
