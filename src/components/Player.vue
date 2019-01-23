@@ -5,14 +5,16 @@
             <v-alert 
                 width="560" height="315"
                 :value="true"
-                class="screen darken-4"
+                class="screen darken-3"
                 color="blue-grey"
             >
+            <canvas id="tv"></canvas>
                 <!-- <v-layout justify-center>
                     <iframe width="560" height="315" src="https://www.youtube.com/embed/EWguUJtesrs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
                 </v-layout> -->
             </v-alert>
         </div>
+        <v-progress-linear height="8" :indeterminate="true" class="player-progress mt-1 pt-1"></v-progress-linear>
     </div>
     <v-btn large round color="red" class="random-btn white--text ml-0 mt-3 px-3">
         <v-icon class="mr-2">cached</v-icon>
@@ -52,35 +54,144 @@ export default {
             panel: [false],
         };
     },
-}
-</script>
+    methods: {
+        $staticNoise(){
+            (function() {
+                "use strict";
 
-<style lang="scss">
-    .random-btn{
-        letter-spacing: 5px;
-    }
-    .player {
-        .screen-container{
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 51%;
+                var canvas = document.querySelector("#tv"),
+                    context = canvas.getContext("gl") || canvas.getContext("2d"),
+                    scaleFactor = 2.5, // Noise size
+                    samples = [],
+                    sampleIndex = 0,
+                    scanOffsetY = 0,
+                    scanSize = 0,
+                    FPS = 50,
+                    scanSpeed = FPS * 15, // 15 seconds from top to bottom
+                    SAMPLE_COUNT = 10;
+
+                window.onresize = function() {
+                    canvas.width = canvas.offsetWidth / scaleFactor;
+                    canvas.height = canvas.width / (canvas.offsetWidth / canvas.offsetHeight);
+                    scanSize = (canvas.offsetHeight / scaleFactor) / 3;
+
+                    samples = []
+                    for(var i = 0; i < SAMPLE_COUNT; i++)
+                        samples.push(generateRandomSample(context, canvas.width, canvas.height));
+                };
+
+                function interpolate(x, x0, y0, x1, y1) {
+                    return y0 + (y1 - y0)*((x - x0)/(x1 - x0));
+                }
+
+
+                function generateRandomSample(context, w, h) {	
+                    var intensity = [];
+                    var factor = h / 50;
+                    var trans = 1 - Math.random() * 0.05;
+
+                    var intensityCurve = [];
+                    for(var i = 0; i < Math.floor(h / factor) + factor; i++)
+                        intensityCurve.push(Math.floor(Math.random() * 15));
+
+                    for( i = 0; i < h; i++) {
+                        var value = interpolate((i/factor), Math.floor(i / factor), intensityCurve[Math.floor(i / factor)], Math.floor(i / factor) + 1, intensityCurve[Math.floor(i / factor) + 1]);
+                        intensity.push(value);
+                    }
+
+                    var imageData = context.createImageData(w, h);
+                    for( i = 0; i < (w * h); i++) {
+                        var k = i * 4;
+                        var color = Math.floor(36 * Math.random());
+                        // Optional: add an intensity curve to try to simulate scan lines
+                        color += intensity[Math.floor(i / w)];
+                        imageData.data[k] = imageData.data[k + 1] = imageData.data[k + 2] = color;
+                        imageData.data[k + 3] = Math.round(30 * trans);
+                    }
+                    return imageData;
+                } 
+
+                function render() {
+                    context.putImageData(samples[Math.floor(sampleIndex)], 0, 0);
+
+                    sampleIndex += 20 / FPS; // 1/FPS == 1 second
+                    if(sampleIndex >= samples.length) sampleIndex = 0;
+
+                    var grd = context.createLinearGradient(0, scanOffsetY, 0, scanSize + scanOffsetY);
+
+                    grd.addColorStop(0, 'rgba(255,255,255,0)');
+                    grd.addColorStop(0.1, 'rgba(255,255,255,0)');
+                    grd.addColorStop(0.2, 'rgba(255,255,255,0.2)');
+                    grd.addColorStop(0.3, 'rgba(255,255,255,0.0)');
+                    // grd.addColorStop(0.45, 'rgba(255,255,255,0.1)');
+                    // grd.addColorStop(0.5, 'rgba(255,255,255,1.0)');
+                    // grd.addColorStop(0.55, 'rgba(255,255,255,0.55)');
+                    // grd.addColorStop(0.6, 'rgba(255,255,255,0.25)');
+                    // grd.addColorStop(0.8, 'rgba(255,255,255,0.15)');
+                    // grd.addColorStop(1, 'rgba(255,255,255,0)');
+
+                    context.fillStyle = grd;
+                    context.fillRect(0, scanOffsetY, canvas.width, scanSize + scanOffsetY);
+                    context.globalCompositeOperation = "lighter";
+
+                    scanOffsetY += (canvas.height / scanSpeed);
+                    if(scanOffsetY > canvas.height) scanOffsetY = -(scanSize / 2);
+
+                    window.requestAnimationFrame(render);
+                }
+                window.onresize();
+                window.requestAnimationFrame(render);
+            })();
+        }
+    },
+    mounted(){
+        this.$staticNoise();
+    },
+}
+    </script>
+
+    <style lang="scss">
+        .random-btn{
+            letter-spacing: 5px;
+        }
+        .player {
+            .screen-container{
+                position: relative;
+                width: 100%;
+                height: 0;
+                padding-bottom: 51%;
+                .screen{
+                    position: absolute;
+                    width: 100%;
+                    height: 100%;
+                    left: 0; top: 0;
+                }
+            }
             .screen{
-                position: absolute;
                 width: 100%;
                 height: 100%;
-                left: 0; top: 0;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                canvas{
+                    padding: 0;
+                    margin: 0;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    transform: translate3d(0, 0, 0);
+
+                }
+                iframe{
+                    display: block;
+                    height: 100%;
+                    max-width: 100%;
+                }
             }
-        }
-        .screen{
-            width: 100%;
-            height: 100%;
-            border-radius: 5px;
-            iframe{
-                display: block;
-                height: 100%;
-                max-width: 100%;
+            .player-progress{
+                border-bottom-left-radius:2px;
+                border-bottom-right-radius:2px;
             }
-        }
     }
 </style>
