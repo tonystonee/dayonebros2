@@ -4,6 +4,7 @@
 
 <script>
 export default {
+    name:'StaticScreen',
     methods: {
         $staticNoise(){
             (function() {

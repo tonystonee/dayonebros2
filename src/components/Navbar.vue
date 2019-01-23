@@ -37,6 +37,7 @@
 
 <script>
   export default {
+    name: 'Navbar',
     data: () => ({
       drawer: null,
       items: [

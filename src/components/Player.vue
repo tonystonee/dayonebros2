@@ -50,6 +50,7 @@
 <script>
     import StaticScreen from '@/components/StaticScreen'
     export default {
+        name: 'Player',
         data(){
             return {
                 panel: [false],

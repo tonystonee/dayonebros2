@@ -16,6 +16,7 @@
     import Player from '@/components/Player' 
     import TopTenBar from '@/components/TopTenBar' 
     export default {
+        name: 'Home',
         data(){
             return {
                 videos: null,
@@ -38,6 +39,7 @@
                 .then(function (response) {
                     // handle success
                     self.videos = response.data.items.map(item => item.snippet);
+                    console.log(self.videos);
                 })
                 .catch(function (error) {
                     // handle error
