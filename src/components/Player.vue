@@ -5,7 +5,7 @@
             <v-alert 
                 width="560" height="315"
                 :value="true"
-                class="screen darken-3"
+                class="screen darken-2"
                 color="blue-grey"
             >
             <static-screen></static-screen>
