@@ -16,10 +16,13 @@
         </div>
         <v-progress-linear height="8" :indeterminate="true" class="player-progress mt-1 mb-0 pt-1"></v-progress-linear>
     </div>
-    <v-btn large round color="red" class="random-btn white--text ml-0 mt-3 px-3">
-        <v-icon class="mr-2">cached</v-icon>
-        Random
-    </v-btn>
+    <v-tooltip top  >
+        <v-btn slot="activator" large round color="red" class="random-btn white--text ml-0 mt-3 px-3">
+            <v-icon class="mr-2">cached</v-icon>
+            Random
+        </v-btn>
+        <span>Fetch a random video</span>
+    </v-tooltip>
     <div class="my-3 white">
         <v-expansion-panel
             v-model="panel"
@@ -29,7 +32,7 @@
                 <h2 class="pa-3">Title</h2>
             </v-layout>
             <v-expansion-panel-content>
-                <div slot="header">
+                <div slot="header" class="font-weight-bold">
                     <span v-if="!panel[0]">Show More</span>
                     <span v-else>Close 
                         <v-icon small right>close</v-icon>

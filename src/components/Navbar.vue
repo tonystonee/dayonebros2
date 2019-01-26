@@ -1,13 +1,14 @@
 <template>
     <div>
         <v-navigation-drawer
+            class="nav-drawer"
             v-model="drawer"
             fixed
             clipped
             app
         >
             <v-list dense>
-                <v-list-tile ripple v-for="item in items" :key="item.text" @click="">
+                <v-list-tile v-for="item in items" :key="item.text" color="black" to="#" ripple >
                     <v-list-tile-action>
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-tile-action>
@@ -61,3 +62,10 @@
 </script>
 
 
+<style lang="scss">
+    .nav-drawer{
+        .primary--text{
+            color: inherit !important;
+        }
+    }
+</style>
