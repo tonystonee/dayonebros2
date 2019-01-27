@@ -11,13 +11,12 @@
         </v-toolbar>
         <div class="white px-2 pt-3 pb-4">
             <v-card hover flat>
-                <v-layout row wrap class="py-1 px-2">
+                <v-layout row wrap class="pa-2">
                     <v-flex xs4>
                         <v-img src="https://i.ytimg.com/vi/1KiACA2ybTs/maxresdefault.jpg"></v-img>
                     </v-flex>
                     <v-flex  xs8 class="px-3">
                         <h3 class="title">Title</h3>
-                        <!-- <p>lore</p> -->
                     </v-flex>
                 </v-layout>
             </v-card>
