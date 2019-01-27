@@ -1,6 +1,7 @@
 
 <template>
-    <v-card class="top-ten">
+<div>
+    <v-card class="top-ten" v-if="videoList">
         <v-toolbar color="red" class="white--text">
             <v-toolbar-title>Top 10</v-toolbar-title>
 
@@ -37,29 +38,26 @@
             </template>
         </v-list>
     </v-card>
+    <v-card v-else>
+        <v-layout class="white pa-3" justify-center>
+                <v-progress-circular
+                    class="py-5"
+                    indeterminate
+                    color="primary"
+                ></v-progress-circular>
+        </v-layout>
+    </v-card>
+</div>
 </template>
-        <!-- <v-layout class="white pa-3" justify-center>
-            <v-card>
-                <v-layout row wrap>
-                    <v-flex xs4>
-                        <v-img src="https://i.ytimg.com/vi/1KiACA2ybTs/maxresdefault.jpg"></v-img>
-                    </v-flex>
-                    <v-flex  xs8 class="px-3">
-                        <h3 class="title">Title</h3>
-                        <p>lore</p>
-                    </v-flex>
-                </v-layout>
-            </v-card>
-            <v-progress-circular
-                class="py-5"
-                indeterminate
-                color="primary"
-            ></v-progress-circular>
-        </v-layout> -->
-
 
 <script>
   export default {
+    props: {
+        videoList: {
+            type: Array,
+            default: null,
+        },
+    },
     data () {
       return {
         items: [
