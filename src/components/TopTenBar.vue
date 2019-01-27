@@ -10,31 +10,30 @@
         </v-toolbar>
 
         <v-list two-line>
-            <template v-for="(item, index) in items">
-            <v-subheader
-                v-if="item.header"
-                :key="item.header"
-            >
-            </v-subheader>
+            <template  v-for="(item, index) in items">
+                <v-tooltip hover :key="index" left>
+                    <div slot="activator">
+                        <v-list-tile
+                            :key="item.title"
+                            class="pa-2"
+                        >
+                            <v-img min-width="100px" left class="mr-2" :src="item.thumbnail"/>
 
-            <v-divider
-                v-else-if="item.divider"
-                :inset="item.inset"
-                :key="index"
-            ></v-divider>
-
-            <v-list-tile
-                v-else
-                :key="item.title"
-                class="pa-2"
-            >
-                <v-img min-width="100px" left class="mr-2" :src="item.thumbnail"/>
-
-                <v-list-tile-content>
-                    <v-list-tile-title v-html="item.title"></v-list-tile-title>
-                    <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
-                </v-list-tile-content>
-            </v-list-tile>
+                            <v-list-tile-content>
+                                <v-list-tile-title v-html="item.title"></v-list-tile-title>
+                                <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                    </div>
+                    <span>
+                        <h3 class="subtitle">
+                            {{item.title}}
+                        </h3>
+                        <p class="caption">
+                            {{item.subtitle}}
+                        </p>
+                    </span>
+                </v-tooltip>
             </template>
         </v-list>
     </v-card>
@@ -67,19 +66,16 @@
           {
             thumbnail: 'https://i.ytimg.com/vi/1KiACA2ybTs/maxresdefault.jpg',
             title: 'Brunch this weekend?',
-            subtitle: "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+            subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
           },
-          { divider: true, inset: true },
           {
             thumbnail: 'https://i.ytimg.com/vi/1KiACA2ybTs/maxresdefault.jpg',
             title: 'Brunch this weekend?',
-            subtitle: "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
-          },
-          { divider: true, inset: true },
-          {
+            subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+          },          {
             thumbnail: 'https://i.ytimg.com/vi/1KiACA2ybTs/maxresdefault.jpg',
             title: 'Brunch this weekend?',
-            subtitle: "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
+            subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
           },
         ]
       }
@@ -90,6 +86,9 @@
     .top-ten{
         .v-list--two-line .v-list__tile {
             height: auto;
+        }
+        [role="listitem"]{
+            cursor: pointer;
         }
     }
  </style>
