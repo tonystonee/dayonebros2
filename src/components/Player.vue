@@ -1,21 +1,9 @@
 <template>
 <div>
     <div class="player">
-        <div class="screen-container">
-            <v-alert 
-                width="560" height="315"
-                :value="true"
-                class="screen darken-2"
-                color="blue-grey"
-            >
-            <static-screen></static-screen>
-                <!-- <v-layout justify-center>
-                    <iframe width="560" height="315" src="https://www.youtube.com/embed/EWguUJtesrs?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen=""></iframe>
-                </v-layout> -->
-            </v-alert>
-        </div>
-        <v-progress-linear height="8" :indeterminate="true" class="player-progress mt-1 mb-0 pt-1"></v-progress-linear>
+        <screen/>
     </div>
+
     <v-tooltip top  >
         <v-btn slot="activator" large round color="red" class="random-btn white--text ml-0 mt-3 px-3">
             <v-icon class="mr-2">cached</v-icon>
@@ -23,35 +11,16 @@
         </v-btn>
         <span>Fetch a random video</span>
     </v-tooltip>
+
     <div class="my-3 white">
-        <v-expansion-panel
-            v-model="panel"
-            expand
-        >
-            <v-layout>
-                <h2 class="pa-3">Title</h2>
-            </v-layout>
-            <v-expansion-panel-content>
-                <div slot="header" class="font-weight-bold">
-                    <span v-if="!panel[0]">Show More</span>
-                    <span v-else>Close 
-                        <v-icon small right>close</v-icon>
-                    </span>
-                </div>
-                <v-card>
-                    <v-card-text>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                    </v-card-text>
-                </v-card>
-            </v-expansion-panel-content>
-        </v-expansion-panel>
+        <video-details></video-details>
     </div>
 </div>
 </template>
 
 <script>
-    import StaticScreen from '@/components/StaticScreen'
+    import Screen from '@/components/Screen'
+    import VideoDetails from '@/components/VideoDetails'
     export default {
         name: 'Player',
         data(){
@@ -60,7 +29,8 @@
             };
         },
         components: {
-            StaticScreen,
+            Screen,
+            VideoDetails,
         },
     }
 </script>
