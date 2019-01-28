@@ -13,7 +13,7 @@
     </v-tooltip>
 
     <div class="my-3 white">
-        <video-details></video-details>
+        <video-details :video="video"></video-details>
     </div>
 </div>
 </template>
@@ -28,11 +28,6 @@
                 type: Object,
                 default: null,
             },
-        },
-        data(){
-            return {
-                panel: [false],
-            };
         },
         components: {
             Screen,

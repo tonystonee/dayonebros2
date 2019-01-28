@@ -4,7 +4,7 @@
         expand
     >
         <v-layout>
-            <h2 class="pa-3">Title</h2>
+            <h2 class="pa-3">{{video.title}}</h2>
         </v-layout>
         <v-expansion-panel-content>
             <div slot="header" class="font-weight-bold">
@@ -15,8 +15,7 @@
             </div>
             <v-card>
                 <v-card-text>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    {{video.description}}
                 </v-card-text>
             </v-card>
         </v-expansion-panel-content>
@@ -39,6 +38,11 @@
                 type: Object,
                 default: null,
             }
+        },
+        data(){
+            return {
+                panel: [false],
+            };
         },
     }
 </script>
