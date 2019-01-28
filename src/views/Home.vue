@@ -2,7 +2,7 @@
   <v-container>
     <v-layout row wrap>
         <v-flex xs12 md8 :class="{'pr-4': $vuetify.breakpoint.mdAndUp}">
-          <player/>  
+          <player :video="currentVideo"/>  
         </v-flex>
         <v-flex xs12 md4>
             <top-ten-bar/>
@@ -19,6 +19,7 @@
         name: 'Home',
         data(){
             return {
+                currentVideo: null,
                 videos: null,
                 panel: [false],
             };
@@ -38,7 +39,13 @@
                 axios.get(url)
                 .then(function (response) {
                     // handle success
-                    self.videos = response.data.items.map(item => item.snippet);
+                    self.videos = response.data.items.map(item => {
+                        return {
+                                id: item.id,
+                            ...item.snippet
+                        };
+                    });
+                    self.currentVideo = self.videos[0];
                     console.log(self.videos);
                 })
                 .catch(function (error) {

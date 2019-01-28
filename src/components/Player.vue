@@ -1,7 +1,7 @@
 <template>
 <div>
     <div class="player">
-        <screen/>
+        <screen :video="video"/>
     </div>
 
     <v-tooltip top  >
@@ -23,6 +23,12 @@
     import VideoDetails from '@/components/VideoDetails'
     export default {
         name: 'Player',
+        props: {
+            video: {
+                type: Object,
+                default: null,
+            },
+        },
         data(){
             return {
                 panel: [false],
@@ -40,29 +46,6 @@
         letter-spacing: 5px;
     }
     .player {
-        .screen-container{
-            position: relative;
-            width: 100%;
-            height: 0;
-            padding-bottom: 51%;
-            .screen{
-                position: absolute;
-                width: 100%;
-                height: 100%;
-                left: 0; top: 0;
-            }
-        }
-        .screen{
-            width: 100%;
-            height: 100%;
-            border-top-left-radius: 5px;
-            border-top-right-radius: 5px;
-            iframe{
-                display: block;
-                height: 100%;
-                max-width: 100%;
-            }
-        }
         .player-progress{
             border-bottom-left-radius:2px;
             border-bottom-right-radius:2px;
