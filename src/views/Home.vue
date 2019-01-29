@@ -41,10 +41,12 @@
                     // handle success
                     self.videos = response.data.items.map(item => {
                         return {
-                                id: item.id,
+                            active: false,
+                            id: item.id,
                             ...item.snippet
                         };
                     });
+                    self.videos[0].active = true;
                     self.currentVideo = self.videos[0];
                     console.log(self.videos);
                 })

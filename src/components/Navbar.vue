@@ -1,7 +1,7 @@
 <template>
     <div >
         <v-navigation-drawer
-            class="nav-drawer grey darken-4"
+            class="nav-drawer grey darken-4     "
             v-model="drawer"
             fixed
             clipped
@@ -20,9 +20,6 @@
                 </v-list-tile>
                 <v-divider></v-divider>
             </v-list>
-            <div class="filler">
-        
-            </div>
         </v-navigation-drawer>
         <v-toolbar
             color="white"

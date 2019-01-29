@@ -18,6 +18,11 @@
                             <v-list-tile
                                 :key="item.title"
                                 class="pa-2"
+                                @click="selectVideo(item, index)"
+                                :class="{
+                                    blue: item.active,
+                                    'lighten-5': item.active,
+                                }"
                             >
                                 <v-img min-width="100px" left class="mr-2" :src="item.thumbnails.medium.url"/>
 
@@ -59,8 +64,15 @@
     },
     data () {
       return {
-
+          activeVideo: 0,
       }
+    },
+    methods: {
+        selectVideo(item, index){
+            this.videoList[this.activeVideo].active = false;
+            item.active = true;
+            this.activeVideo = index;
+        }
     }
   }
 </script>
