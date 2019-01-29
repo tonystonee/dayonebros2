@@ -5,7 +5,7 @@
           <player :video="currentVideo"/>  
         </v-flex>
         <v-flex xs12 md4>
-            <top-ten-bar/>
+            <top-ten-bar :videoList="videos"/>
         </v-flex>
     </v-layout>
   </v-container>

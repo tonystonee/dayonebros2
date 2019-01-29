@@ -11,18 +11,18 @@
         </v-toolbar>
 
         <v-list two-line>
-            <template  v-for="(item, index) in items">
+            <template  v-for="(item, index) in videoList">
                 <v-tooltip hover :key="index" left>
                     <div slot="activator">
                         <v-list-tile
                             :key="item.title"
                             class="pa-2"
                         >
-                            <v-img min-width="100px" left class="mr-2" :src="item.thumbnail"/>
+                            <v-img min-width="100px" left class="mr-2" :src="item.thumbnails.medium.url"/>
 
                             <v-list-tile-content>
                                 <v-list-tile-title v-html="item.title"></v-list-tile-title>
-                                <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
+                                <v-list-tile-sub-title v-html="item.description"></v-list-tile-sub-title>
                             </v-list-tile-content>
                         </v-list-tile>
                     </div>
@@ -30,9 +30,6 @@
                         <h3 class="subtitle">
                             {{item.title}}
                         </h3>
-                        <p class="caption">
-                            {{item.subtitle}}
-                        </p>
                     </span>
                 </v-tooltip>
             </template>
@@ -60,22 +57,7 @@
     },
     data () {
       return {
-        items: [
-          {
-            thumbnail: 'https://i.ytimg.com/vi/1KiACA2ybTs/maxresdefault.jpg',
-            title: 'Brunch this weekend?',
-            subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
-          },
-          {
-            thumbnail: 'https://i.ytimg.com/vi/1KiACA2ybTs/maxresdefault.jpg',
-            title: 'Brunch this weekend?',
-            subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
-          },          {
-            thumbnail: 'https://i.ytimg.com/vi/1KiACA2ybTs/maxresdefault.jpg',
-            title: 'Brunch this weekend?',
-            subtitle: "I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
-          },
-        ]
+
       }
     }
   }

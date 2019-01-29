@@ -1,13 +1,13 @@
 <template>
-    <div>
+    <div >
         <v-navigation-drawer
-            class="nav-drawer"
+            class="nav-drawer grey darken-4"
             v-model="drawer"
             fixed
             clipped
             app
         >
-            <v-list dense>
+            <v-list dense class="white py-0">
                 <v-list-tile v-for="item in items" :key="item.text" color="black" to="#" ripple >
                     <v-list-tile-action>
                         <v-icon>{{ item.icon }}</v-icon>
@@ -20,6 +20,9 @@
                 </v-list-tile>
                 <v-divider></v-divider>
             </v-list>
+            <div class="filler">
+        
+            </div>
         </v-navigation-drawer>
         <v-toolbar
             color="white"
@@ -65,7 +68,13 @@
 
 <style lang="scss">
     .nav-drawer{
+        [role="list"]{
+            background-image: none;
+        }
+        background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: repeat;
         .primary--text{
+            background-image: none;
             color: inherit !important;
         }
     }
