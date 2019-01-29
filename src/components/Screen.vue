@@ -8,14 +8,14 @@
                 >
                     <v-alert 
                         transition="scale-transition" origin="center center"
-                        v-if="video"
+                        v-show="video && url"
                         :value="true"
-                        class="darken-2 pa-0 ma-0"
-                        color="blue-grey"
+                        class="pa-0 ma-0"
+                        :style="styleObject"
                     >
-                    <iframe :src="url" frameborder="0" allowfullscreen=""></iframe>
+                        <iframe :src="url" frameborder="0" allowfullscreen=""></iframe>
                     </v-alert>
-                    <static-screen v-else></static-screen>
+                    <static-screen v-if="!video"></static-screen>
                 </v-alert>
             </v-responsive>
         <v-progress-linear v-if="!video" height="8" :indeterminate="true" class="player-progress mt-1 mb-0 pt-1"></v-progress-linear>
@@ -32,13 +32,26 @@
                 default: null,
             },
         },
-        computed: {
-            url(){
-                return `https://www.youtube.com/embed/${this.video.id}?rel=0&amp;showinfo=0`;
-            }
-        },
+
         components: {
             StaticScreen,
+        },
+        computed: {
+            styleObject() {
+                if (this.video){
+                    return {
+                        backgroundImage: `url("${this.video.thumbnails.maxres.url}")`,
+                        backgroundSize: 'cover',
+                    }
+                } 
+                return null;
+            },
+            url(){
+                if (this.video){
+                    return `https://www.youtube.com/embed/${this.video.id}?rel=0&amp;showinfo=0`;
+                }
+                return null;
+            },
         }
     }
 </script>
