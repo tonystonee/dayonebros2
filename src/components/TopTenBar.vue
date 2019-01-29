@@ -72,6 +72,7 @@
             this.videoList[this.activeVideo].active = false;
             item.active = true;
             this.activeVideo = index;
+            this.$emit('selectVideo', item);
         }
     }
   }

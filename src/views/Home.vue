@@ -5,7 +5,7 @@
           <player :video="currentVideo"/>  
         </v-flex>
         <v-flex xs12 md4>
-            <top-ten-bar :videoList="videos"/>
+            <top-ten-bar @selectVideo="changeVideo" :videoList="videos"/>
         </v-flex>
     </v-layout>
   </v-container>
@@ -54,6 +54,9 @@
                     // handle error
                     console.log(error);
                 });
+            },
+            changeVideo(video){
+                this.currentVideo = video;
             },
         },
         mounted(){
