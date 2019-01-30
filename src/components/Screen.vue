@@ -40,7 +40,9 @@
             styleObject() {
                 if (this.video){
                     return {
-                        backgroundImage: `url("${this.video.thumbnails.maxres.url}")`,
+                        backgroundImage: 
+                        `url("${this.video.thumbnails.maxres ? 
+                            this.video.thumbnails.maxres.url : this.video.thumbnails.medium.url}")`,
                         backgroundSize: 'cover',
                     }
                 } 

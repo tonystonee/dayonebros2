@@ -2,7 +2,7 @@
 <template>
 <div>
     <v-expand-transition>
-        <v-card class="top-ten" v-if="videoList">
+        <v-card class="top-ten pb-3" v-if="videoList" >
             <v-toolbar color="red" class="white--text">
                 <v-toolbar-title>Top 10</v-toolbar-title>
 
