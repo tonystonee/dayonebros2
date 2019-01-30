@@ -2,7 +2,7 @@
 <template>
 <div>
     <v-expand-transition>
-        <v-card class="top-ten pb-3" v-if="videoList" >
+        <v-card class="top-ten" v-if="videoList">
             <v-toolbar color="red" class="white--text">
                 <v-toolbar-title>Top 10</v-toolbar-title>
 
@@ -11,7 +11,7 @@
                 <v-icon color="white">whatshot</v-icon>
             </v-toolbar>
 
-            <v-list two-line>
+            <v-list class="pt-0" two-line>
                 <template  v-for="(item, index) in videoList">
                     <v-tooltip hover :key="index" left>
                         <div slot="activator">

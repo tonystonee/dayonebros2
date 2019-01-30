@@ -2,66 +2,29 @@
   <v-container>
     <v-layout row wrap>
         <v-flex xs12 md8 :class="{'pr-4': $vuetify.breakpoint.mdAndUp}">
-          <player :video="currentVideo"/>  
+          <player @random="random" :video="currentVideo"/>  
         </v-flex>
         <v-flex xs12 md4>
-            <top-ten-bar @selectVideo="changeVideo" :videoList="videos"/>
+            <top-ten-bar @selectVideo="changeVideo" :videoList="topTen"/>
         </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-    import axios from 'axios';
-    import Player from '@/components/Player' 
-    import TopTenBar from '@/components/TopTenBar' 
+    import mixin from '@/mixins/'
     export default {
         name: 'Home',
+        mixins: [mixin],
         data(){
             return {
-                currentVideo: null,
-                videos: null,
-                panel: [false],
+                maxResults: 50,
             };
-        },
-        components: {
-            Player,
-            TopTenBar,
         },
         computed: {
             url(){
-                return `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=10&key=${this.$store.state.key}`;
+                return `https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=${this.maxResults}&key=${this.$store.state.key}`;
             },
-        },
-        methods: {
-            getVideos(url){
-                const self = this;
-                axios.get(url)
-                .then(function (response) {
-                    // handle success
-                    self.videos = response.data.items.map(item => {
-                        return {
-                            active: false,
-                            id: item.id,
-                            ...item.snippet
-                        };
-                    });
-                    self.videos[0].active = true;
-                    self.currentVideo = self.videos[0];
-                    console.log(self.videos);
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                });
-            },
-            changeVideo(video){
-                this.currentVideo = video;
-            },
-        },
-        mounted(){
-            //home page reel
-            this.getVideos(this.url);
         },
     }
 </script>
