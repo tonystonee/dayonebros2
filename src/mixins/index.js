@@ -22,6 +22,12 @@ export default {
             return Math.floor(Math.random() * choices +lowerValue);
         },
         random(){
+            // remove active video in top ten
+            if(this.activeVideo > -1){
+                this.topTen[this.activeVideo].active = false;
+                this.activeVideo = -1;
+            }
+
             this.currentVideo = 
             this.videos[this.$_selectFrom(0, this.videos.length-1)];
         },
@@ -47,7 +53,13 @@ export default {
                 console.log(error);
             });
         },
-        changeVideo(video){
+        changeVideo(video, index){
+            if(this.activeVideo > -1){
+                this.topTen[this.activeVideo].active = false;
+            }
+            video.active = true;
+            this.activeVideo = index;
+
             this.currentVideo = video;
         },
     },

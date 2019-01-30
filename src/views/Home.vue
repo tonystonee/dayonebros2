@@ -5,7 +5,7 @@
           <player @random="random" :video="currentVideo"/>  
         </v-flex>
         <v-flex xs12 md4>
-            <top-ten-bar @selectVideo="changeVideo" :videoList="topTen"/>
+            <top-ten-bar @selectVideo="changeVideo" :activeVideo="activeVideo" :videoList="topTen"/>
         </v-flex>
     </v-layout>
   </v-container>

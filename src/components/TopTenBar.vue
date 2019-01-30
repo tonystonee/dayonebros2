@@ -61,20 +61,16 @@
             type: Array,
             default: null,
         },
-    },
-    data () {
-      return {
-          activeVideo: 0,
-      }
+        activeVideo: {
+            type: Number,
+            required: true,
+        },
     },
     methods: {
         selectVideo(item, index){
-            this.videoList[this.activeVideo].active = false;
-            item.active = true;
-            this.activeVideo = index;
-            this.$emit('selectVideo', item);
-        }
-    }
+            this.$emit('selectVideo', item, index);
+        },
+    },
   }
 </script>
  <style lang="scss">
