@@ -8,7 +8,7 @@
             app
         >
             <v-list dense class="white py-0">
-                <v-list-tile v-for="item in items" :key="item.text" color="black" to="#" ripple >
+                <v-list-tile v-for="item in items" :key="item.text" color="black" :to="{path: item.slug}" ripple >
                     <v-list-tile-action>
                         <v-icon>{{ item.icon }}</v-icon>
                     </v-list-tile-action>
@@ -43,17 +43,17 @@
     data: () => ({
       drawer: null,
       items: [
-        { icon: 'trending_up', text: 'News' },
-        { icon: 'fas fa-laugh-squint', text: 'Comedy' },
-        { icon: 'spa', text: 'Beauty' },
-        { icon: 'fas fa-football-ball', text: 'Sports' },
-        { icon: 'drive_eta', text: 'Auto' },
-        { icon: 'audiotrack', text: 'Music' },
-        { icon: 'fas fa-film', text: 'Film and Animation' },
-        { icon: 'videogame_asset', text: 'Gaming' },
-        { icon: 'pets', text: 'Pets' },
-        { icon: 'fas fa-flask', text: 'Science' },
-        { icon: 'fas fa-graduation-cap', text: 'Education' }
+        { icon: 'trending_up', text: 'News', slug: 'news' },
+        { icon: 'fas fa-laugh-squint', text: 'Comedy', slug: 'news' },
+        { icon: 'spa', text: 'Beauty', slug: 'news' },
+        { icon: 'fas fa-football-ball', text: 'Sports', slug: 'news' },
+        { icon: 'drive_eta', text: 'Auto', slug: 'news' },
+        { icon: 'audiotrack', text: 'Music', slug: 'news' },
+        { icon: 'fas fa-film', text: 'Film and Animation', slug: 'news' },
+        { icon: 'videogame_asset', text: 'Gaming', slug: 'news' },
+        { icon: 'pets', text: 'Pets', slug: 'news' },
+        { icon: 'fas fa-flask', text: 'Science', slug: 'news' },
+        { icon: 'fas fa-graduation-cap', text: 'Education', slug: 'news' },
       ],
     }),
     props: {
