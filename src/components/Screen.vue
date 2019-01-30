@@ -6,15 +6,11 @@
                 class="screen darken-2 pa-0 ma-0"
                 color="blue-grey"
             >
-                <v-alert 
-                    transition="scale-transition" origin="center center"
-                    v-show="video && url"
-                    :value="true"
-                    class="pa-0 ma-0"
-                    :style="styleObject"
-                >
-                    <iframe :src="url" frameborder="0" allowfullscreen=""></iframe>
-                </v-alert>
+                <v-scale-transition  origin="center, center">
+                    <div v-if="video && url" :style="styleObject">
+                      <iframe :src="url" frameborder="0" allowfullscreen=""></iframe>
+                    </div>
+                </v-scale-transition>
                 <static-screen v-if="!video"></static-screen>
             </v-alert>
         </v-responsive>
