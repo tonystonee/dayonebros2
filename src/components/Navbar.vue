@@ -1,5 +1,5 @@
 <template>
-    <div >
+    <div>
         <v-navigation-drawer
             class="nav-drawer"
             v-model="drawer"
@@ -21,6 +21,7 @@
                 <v-divider></v-divider>
             </v-list>
         </v-navigation-drawer>
+
         <v-toolbar
             color="white"
             dense
@@ -30,8 +31,9 @@
         >
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-icon class="mx-3" color="red">fas fa-play-circle</v-icon>
-            <v-toolbar-title class="mr-5 align-center">
-                <router-link :to="{name: 'home'}" class="title black--text">Day One Bros.com</router-link>
+            <v-toolbar-title class="title mr-5 align-center ">
+                <router-link :to="{name: 'home'}" class="black--text">Day One Bros.com &nbsp</router-link>
+                <span v-if="category" class="subheading">{{category}}</span>
             </v-toolbar-title>
         </v-toolbar>
     </div>
@@ -40,8 +42,12 @@
 <script>
   export default {
     name: 'Navbar',
+    props: {
+        source: String,
+    },
     data: () => ({
       drawer: null,
+      category: null,
       items: [
         { icon: 'trending_up', text: 'News', slug: 'news' },
         { icon: 'fas fa-laugh-squint', text: 'Comedy', slug: 'news' },
@@ -56,16 +62,27 @@
         { icon: 'fas fa-graduation-cap', text: 'Education', slug: 'news' },
       ],
     }),
-    props: {
-      source: String
+    watch:{
+        $route: {
+            handler(to, from){
+                if(this.$router.history.current.name == "home"){
+                    this.category = null;
+                } else {
+                    this.category = this.$router.history.current.name;
+                }
+            },
+            immediate: true,
+        },
     }
-  }
+  };
 </script>
 
 
 <style lang="scss">
 .title{
-    text-decoration: none;
+    a{
+        text-decoration: none;
+    }
 }
 .nav-drawer{
     .primary--text{
