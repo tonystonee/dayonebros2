@@ -1,7 +1,7 @@
 <template>
     <div >
         <v-navigation-drawer
-            class="nav-drawer grey darken-4     "
+            class="nav-drawer"
             v-model="drawer"
             fixed
             clipped
@@ -64,15 +64,7 @@
 
 
 <style lang="scss">
-    $box-shadow: 0 10px 120px;
     .nav-drawer{
-        box-shadow: $box-shadow inset;
-        [role="list"]{
-            background-image: none;
-            box-shadow: $box-shadow;
-        }
-        background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-        background-repeat: repeat;
         .primary--text{
             background-image: none;
             color: inherit !important;

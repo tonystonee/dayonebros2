@@ -46,7 +46,8 @@
             },
             url(){
                 if (this.video){
-                    return `https://www.youtube.com/embed/${this.video.id}?rel=0&amp;showinfo=0`;
+                    const videoId = this.video.id.videoId ? this.video.id.videoId : this.video.id;
+                    return `https://www.youtube.com/embed/${videoId}?rel=0&amp;showinfo=0`;
                 }
                 return null;
             },

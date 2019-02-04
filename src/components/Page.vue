@@ -1,8 +1,29 @@
+<template>
+<v-container>
+    <v-layout row wrap>
+        <v-flex xs12 md8 :class="{'pr-4': $vuetify.breakpoint.mdAndUp}">
+          <player @random="random" :video="currentVideo"/>  
+        </v-flex>
+        <v-flex xs12 md4>
+            <top-ten-bar @selectVideo="changeVideo" :activeVideo="activeVideo" :videoList="topTen"/>
+        </v-flex>
+    </v-layout>
+</v-container>
+</template>
+
+<script>
 import axios from 'axios';
 import Player from '@/components/Player' 
 import TopTenBar from '@/components/TopTenBar' 
 
 export default {
+    name: 'Page',
+    props: {
+        uri: {
+            type: String,
+            required: true,
+        },
+    },
     data(){
         return {
             currentVideo: null,
@@ -31,9 +52,9 @@ export default {
             this.currentVideo = 
             this.videos[this.$_selectFrom(0, this.videos.length-1)];
         },
-        getVideos(url){
+        getVideos(uri){
             const self = this;
-            axios.get(url)
+            axios.get(uri)
             .then(function (response) {
                 // handle success
                 self.videos = response.data.items.map(item => {
@@ -65,6 +86,7 @@ export default {
     },
     mounted(){
         //home page reel
-        this.getVideos(this.url);
+        this.getVideos(this.uri);
     },
 }
+</script>
