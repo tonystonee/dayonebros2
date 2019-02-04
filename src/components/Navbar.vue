@@ -31,7 +31,7 @@
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-icon class="mx-3" color="red">fas fa-play-circle</v-icon>
             <v-toolbar-title class="mr-5 align-center">
-                <span class="title">Day One Bros.com</span>
+                <router-link :to="{name: 'home'}" class="title black--text">Day One Bros.com</router-link>
             </v-toolbar-title>
         </v-toolbar>
     </div>
@@ -64,10 +64,13 @@
 
 
 <style lang="scss">
-    .nav-drawer{
-        .primary--text{
-            background-image: none;
-            color: inherit !important;
-        }
+.title{
+    text-decoration: none;
+}
+.nav-drawer{
+    .primary--text{
+        background-image: none;
+        color: inherit !important;
     }
+}
 </style>
