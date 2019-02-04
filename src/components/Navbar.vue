@@ -5,9 +5,11 @@
             v-model="drawer"
             fixed
             clipped
+            width="220"
             app
         >
             <v-list dense class="white py-0">
+                <v-divider></v-divider>
                 <v-list-tile v-for="item in items" :key="item.text" color="black" :to="{path: item.slug}" ripple >
                     <v-list-tile-action>
                         <v-icon>{{ item.icon }}</v-icon>
@@ -25,6 +27,7 @@
         <v-toolbar
             color="white"
             dense
+            flat
             fixed
             clipped-left
             app
