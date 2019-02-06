@@ -72,7 +72,6 @@ export default {
                         ...item.snippet
                     };
                 });
-                console.log(self.videos)
                 self.topTen = self.videos.slice(0, 10);
                 self.topTen[0].active = true;
                 self.currentVideo = self.topTen[0];
