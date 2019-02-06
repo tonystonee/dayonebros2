@@ -51,42 +51,30 @@
 </template>
 
 <script>
-  export default {
-    name: 'Navbar',
-    props: {
-        source: String,
-    },
-    data: () => ({
-      drawer: null,
-      category: null,
-      items: [
-        { icon: 'trending_up', text: 'News', slug: 'news' },
-        { icon: 'fas fa-laugh-squint', text: 'Comedy', slug: 'comedy' },
-        // { icon: 'face', text: 'Anime', slug: 'anime' },
-        // { icon: 'camera_enhance', text: 'Vlogs', slug: 'vlogs' },
-        { icon: 'fas fa-football-ball', text: 'Sports', slug: 'sports' },
-        { icon: 'drive_eta', text: 'Auto', slug: 'auto' },
-        { icon: 'audiotrack', text: 'Music', slug: 'music' },
-        { icon: 'fas fa-film', text: 'Film and Animation', slug: 'film_and_animation' },
-        { icon: 'videogame_asset', text: 'Gaming', slug: 'gaming' },
-        { icon: 'pets', text: 'Pets', slug: 'pets' },
-        { icon: 'fas fa-flask', text: 'Science', slug: 'science' },
-        { icon: 'fas fa-graduation-cap', text: 'Education', slug: 'education' },
-      ],
-    }), 
-    watch:{
-        $route: {
-            handler(){
-                if(this.$router.history.current.name == "home"){
-                    this.category = null;
-                } else {
-                    this.category = this.$router.history.current.name;
-                }
-            },
-            immediate: true,
+    import Category from '@/mixins/category';
+    export default {
+        name: 'Navbar',
+        mixins: [Category],
+        props: {
+            source: String,
         },
-    }
-  };
+        data: () => ({
+        drawer: null,
+        category: null,
+        items: [
+            { icon: 'trending_up', text: 'News', slug: 'news' },
+            { icon: 'fas fa-laugh-squint', text: 'Comedy', slug: 'comedy' },
+            { icon: 'fas fa-football-ball', text: 'Sports', slug: 'sports' },
+            { icon: 'drive_eta', text: 'Auto', slug: 'auto' },
+            { icon: 'audiotrack', text: 'Music', slug: 'music' },
+            { icon: 'fas fa-film', text: 'Film and Animation', slug: 'film_and_animation' },
+            { icon: 'videogame_asset', text: 'Gaming', slug: 'gaming' },
+            { icon: 'pets', text: 'Pets', slug: 'pets' },
+            { icon: 'fas fa-flask', text: 'Science', slug: 'science' },
+            { icon: 'fas fa-graduation-cap', text: 'Education', slug: 'education' },
+        ],
+        }), 
+    };
 </script>
 
 

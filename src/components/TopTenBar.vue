@@ -4,7 +4,9 @@
     <v-expand-transition>
         <v-card class="top-ten" v-if="videoList">
             <v-toolbar color="red" class="white--text">
-                <v-toolbar-title>Top 10</v-toolbar-title>
+                <v-toolbar-title>Top 10 
+                    <span v-if="category">in {{category}}</span>
+                </v-toolbar-title>
 
                 <v-spacer></v-spacer>
 
@@ -55,23 +57,25 @@
 </template>
 
 <script>
-  export default {
-    props: {
-        videoList: {
-            type: Array,
-            default: null,
+    import Category from '@/mixins/category'
+    export default {
+        mixins: [Category],
+        props: {
+            videoList: {
+                type: Array,
+                default: null,
+            },
+            activeVideo: {
+                type: Number,
+                required: true,
+            },
         },
-        activeVideo: {
-            type: Number,
-            required: true,
+        methods: {
+            selectVideo(item, index){
+                this.$emit('selectVideo', item, index);
+            },
         },
-    },
-    methods: {
-        selectVideo(item, index){
-            this.$emit('selectVideo', item, index);
-        },
-    },
-  }
+    }
 </script>
  <style lang="scss">
     .top-ten{

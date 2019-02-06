@@ -9,7 +9,9 @@
             <v-icon class="mr-2">cached</v-icon>
             Random
         </v-btn>
-        <span>Fetch a random video</span>
+        <span>
+            Fetch a random <span class="text-lowercase" v-if="category">{{category}}</span> video 
+        </span>
     </v-tooltip>
 
     <div class="my-3 white">
@@ -21,8 +23,10 @@
 <script>
     import Screen from '@/components/Screen'
     import VideoDetails from '@/components/VideoDetails'
+    import Category from '@/mixins/category'
     export default {
         name: 'Player',
+        mixins: [Category],
         props: {
             video: {
                 type: Object,
