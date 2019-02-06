@@ -1,5 +1,5 @@
 <template>
-<v-container>
+<v-container fluid>
     <v-layout row wrap>
         <v-flex xs12 md8 :class="{'pr-4': $vuetify.breakpoint.mdAndUp}">
           <player @random="random" :video="currentVideo"/>  

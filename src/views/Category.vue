@@ -5,7 +5,7 @@
 <script>
     import Page from '@/components/Page'
     export default {
-        name:  'News',
+        name:  'Category Page',
         components: {
             Page,
         },
