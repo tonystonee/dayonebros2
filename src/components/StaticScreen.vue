@@ -74,12 +74,6 @@ export default {
                     grd.addColorStop(0.1, 'rgba(255,255,255,0)');
                     grd.addColorStop(0.2, 'rgba(255,255,255,0.2)');
                     grd.addColorStop(0.3, 'rgba(255,255,255,0.0)');
-                    // grd.addColorStop(0.45, 'rgba(255,255,255,0.1)');
-                    // grd.addColorStop(0.5, 'rgba(255,255,255,1.0)');
-                    // grd.addColorStop(0.55, 'rgba(255,255,255,0.55)');
-                    // grd.addColorStop(0.6, 'rgba(255,255,255,0.25)');
-                    // grd.addColorStop(0.8, 'rgba(255,255,255,0.15)');
-                    // grd.addColorStop(1, 'rgba(255,255,255,0)');
 
                     context.fillStyle = grd;
                     context.fillRect(0, scanOffsetY, canvas.width, scanSize + scanOffsetY);

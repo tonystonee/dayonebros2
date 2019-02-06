@@ -75,6 +75,9 @@
                 this.$emit('selectVideo', item, index);
             },
         },
+        mounted(){
+            console.log(this.videoList)
+        }
     }
 </script>
  <style lang="scss">
