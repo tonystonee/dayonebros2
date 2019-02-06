@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Category from './views/Category'
 import Home from './views/Home'
+import colors from 'vuetify/es5/util/colors'
 
 Vue.use(Router)
 
@@ -13,6 +14,9 @@ export default new Router({
       path: '/',
       name: 'home',
       component: Home,
+      props: {
+        primary: colors.red,
+      },    
     },
     {
       path: '/auto',
@@ -20,6 +24,7 @@ export default new Router({
       component: Category,
       props: {
         categoryId: 2,
+        primary: colors.red,
       },
     },
     {
@@ -28,6 +33,7 @@ export default new Router({
       component: Category,
       props: {
         categoryId: 23,
+        primary: colors.blue,
       },
     },
     {
@@ -36,6 +42,7 @@ export default new Router({
       component: Category,
       props: {
         categoryId: 27,
+        primary: colors.yellow,
       },
     },
     {
@@ -44,6 +51,7 @@ export default new Router({
       component: Category,
       props: {
         categoryId: 1,
+        primary: colors.pink,
       },
     },
     {
@@ -52,6 +60,7 @@ export default new Router({
       component: Category,
       props: {
         categoryId: 20,
+        primary: colors.red,
       },
     },
     {
@@ -60,6 +69,7 @@ export default new Router({
       component: Category,
       props: {
         categoryId: 17,
+        primary: colors.green,
       },
     },
     {
@@ -68,6 +78,7 @@ export default new Router({
       component: Category,
       props: {
         categoryId: 10,
+        primary: colors.blue,
       },
     },
     {
@@ -76,6 +87,7 @@ export default new Router({
       component: Category,
       props: {
         categoryId: 25,
+        primary: colors.lightBlue,
       },
     },
     {
@@ -84,6 +96,7 @@ export default new Router({
       component: Category,
       props: {
         categoryId: 15,
+        primary: colors.lightGreen,
       },
     },
     {
@@ -92,6 +105,7 @@ export default new Router({
       component: Category,
       props: {
         categoryId: 28,
+        primary: colors.green,
       },
     },
     { path: '*', redirect: '/' }

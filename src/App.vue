@@ -9,7 +9,7 @@
 
 <script>
 import Navbar from './components/Navbar'
-
+import colors from 'vuetify/lib/util/colors';
 export default {
   name: 'App',
   components: {
@@ -20,6 +20,14 @@ export default {
       //
     }
   },
+    watch: {
+      $route: {
+          handler(){
+            this.$vuetify.theme.barColor = this.$route.matched[0].props.default.primary;
+          },
+          immediate: true,
+      },
+    }
 }
 </script>
 

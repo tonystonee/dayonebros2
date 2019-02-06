@@ -3,7 +3,7 @@
 <div>
     <v-expand-transition>
         <v-card class="top-ten" v-if="videoList">
-            <v-toolbar color="red" class="white--text">
+            <v-toolbar color="barColor darken-2" class="white--text">
                 <v-toolbar-title>Top 10 
                     <span v-if="category">in {{category}}</span>
                 </v-toolbar-title>

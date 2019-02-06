@@ -5,7 +5,7 @@
     </div>
 
     <v-tooltip top  >
-        <v-btn @click="$emit('random')" slot="activator" large round color="red" class="random-btn white--text ml-0 mt-3 px-3">
+        <v-btn @click="$emit('random')" slot="activator" large round color="barColor darken-2" class="random-btn white--text ml-0 mt-3 px-3">
             <v-icon class="mr-2">cached</v-icon>
             Random
         </v-btn>
