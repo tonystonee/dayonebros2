@@ -33,9 +33,9 @@
             app
         >
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-            <v-icon class="mx-3" color="red">fas fa-play-circle</v-icon>
-            <v-toolbar-title class="title mr-5 align-center ">
-                <router-link :to="{name: 'home'}" class="black--text">Day One Bros.com &nbsp</router-link>
+            <v-icon class="ml-2 mr-0" color="red">fas fa-play-circle</v-icon>
+            <v-toolbar-title class="title ml-2 mr-5 align-center ">
+                <router-link :to="{name: 'home'}" class="black--text">DayOneBros &nbsp;</router-link>
                 <span v-if="category" class="subheading">{{category}}</span>
             </v-toolbar-title>
         </v-toolbar>
@@ -68,7 +68,7 @@
     }), 
     watch:{
         $route: {
-            handler(to, from){
+            handler(){
                 if(this.$router.history.current.name == "home"){
                     this.category = null;
                 } else {

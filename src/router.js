@@ -1,17 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Anime from './views/Anime'
-import Auto from './views/Auto'
-import Comedy from './views/Comedy'
-import Education from './views/Education'
-import Film from './views/Film'
-import Gaming from './views/Gaming'
-import Music from './views/Music'
-import News from './views/News'
-import Pets from './views/Pets'
-import Science from './views/Science'
-import Sports from './views/Sports'
-import Vlogs from './views/Vlogs'
+import Category from './views/Category'
 import Home from './views/Home'
 
 Vue.use(Router)
@@ -28,52 +17,82 @@ export default new Router({
     {
       path: '/auto',
       name: 'Auto',
-      component: Auto,
+      component: Category,
+      props: {
+        categoryId: 2,
+      },
     },
     {
       path: '/comedy',
       name: 'Comedy',
-      component: Comedy,
+      component: Category,
+      props: {
+        categoryId: 23,
+      },
     },
     {
       path: '/education',
       name: 'Education',
-      component: Education,
+      component: Category,
+      props: {
+        categoryId: 27,
+      },
     },
     {
       path: '/film_and_animation',
       name: 'Film and Animation',
-      component: Film,
+      component: Category,
+      props: {
+        categoryId: 1,
+      },
     },
     {
       path: '/gaming',
       name: 'Gaming',
-      component: Gaming,
+      component: Category,
+      props: {
+        categoryId: 20,
+      },
     },
     {
       path: '/sports',
       name: 'Sports',
-      component: Sports,
+      component: Category,
+      props: {
+        categoryId: 17,
+      },
     },
     {
       path: '/music',
       name: 'Music',
-      component: Music,
+      component: Category,
+      props: {
+        categoryId: 10,
+      },
     },
     {
       path: '/news',
       name: 'News',
-      component: News,
+      component: Category,
+      props: {
+        categoryId: 25,
+      },
     },
     {
       path: '/pets',
       name: 'Pets',
-      component: Pets,
+      component: Category,
+      props: {
+        categoryId: 15,
+      },
     },
     {
       path: '/Science',
       name: 'Science',
-      component: Science,
+      component: Category,
+      props: {
+        categoryId: 28,
+      },
     },
     { path: '*', redirect: '/' }
   ]

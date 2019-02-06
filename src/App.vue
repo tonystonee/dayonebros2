@@ -19,11 +19,14 @@ export default {
     return {
       //
     }
-  }
+  },
 }
 </script>
 
 <style>
+a{
+    text-decoration: none;
+}
 .main-wrapper{
   background: rgb(250,250,250);
   background: linear-gradient(90deg, rgba(250,250,250,1) 0%, rgba(189,189,189,1) 39%, rgba(238,238,238,1) 100%);
