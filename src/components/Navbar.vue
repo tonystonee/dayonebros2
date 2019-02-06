@@ -43,7 +43,7 @@
             app
         >
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-            <v-icon class="ml-2 mr-0" :color="iconColor">fas fa-play-circle</v-icon>
+            <v-icon class="ml-2 mr-0 navicon" :color="iconColor">fas fa-play-circle</v-icon>
             <v-toolbar-title class="title ml-2 mr-5 align-center ">
                 <router-link :to="{name: 'home'}" :class="textColor">DayOneBros &nbsp;</router-link>
                 <span v-if="category" :class="textColor" class="subheading">{{category}}</span>
@@ -99,9 +99,6 @@
                 }
             },
         },
-        mounted(){
-            console.log(this.$route)
-        }
     };
 </script>
 
@@ -113,6 +110,7 @@
     }
 }
 .nav-drawer{
+
     .title-tile{
         flex-direction: column;
         align-content: center;
