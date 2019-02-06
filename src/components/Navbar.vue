@@ -5,10 +5,18 @@
             v-model="drawer"
             fixed
             clipped
-            width="220"
+            width="230"
             app
         >
             <v-list dense class="white py-0">
+                <v-list-tile class="hidden-lg-and-up title-tile d-flex">
+                    <v-toolbar-side-icon @click.stop="drawer = !drawer" class="mr-1"></v-toolbar-side-icon>
+                    <v-icon class="mx-0" color="red">fas fa-play-circle</v-icon>
+                    <v-toolbar-title class="title ml-1 mr-5 align-center ">
+                        <router-link :to="{name: 'home'}" class="black--text">DayOneBros &nbsp;</router-link>
+                    </v-toolbar-title>
+                    <v-divider></v-divider>
+                </v-list-tile>
                 <v-divider></v-divider>
                 <v-list-tile v-for="item in items" :key="item.text" color="black" :to="{path: item.slug}" ripple >
                     <v-list-tile-action>
@@ -89,6 +97,17 @@
     }
 }
 .nav-drawer{
+    .title-tile{
+        flex-direction: column;
+        align-content: center;
+        height: 48px;
+        .v-list__tile{
+            padding: 0;
+            .title{
+                font-size: 16px !important;
+            }
+        }
+    }
     .primary--text{
         background-image: none;
         color: inherit !important;
