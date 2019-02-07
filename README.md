@@ -1,6 +1,6 @@
 # dayonebros
 
-V2.0
+v2.0
 
 ## Project setup
 ```
