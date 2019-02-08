@@ -8,6 +8,39 @@
             <top-ten-bar @selectVideo="changeVideo" :activeVideo="activeVideo" :videoList="topTen"/>
         </v-flex>
     </v-layout>
+
+<v-dialog
+    class="error-dialog"
+    v-model="dialog"
+    width="500"
+    >
+
+      <v-card>
+        <v-card-title
+          class="headline grey lighten-2"
+          primary-title
+        >
+          Error
+        </v-card-title>
+
+        <v-card-text>We're sorry, but an error has occured. Please contact the adminstrator to address the issue.
+        </v-card-text>
+        <v-card-actions>
+            <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            flat
+            @click="dialog = false"
+          >
+            OKAY
+          </v-btn>
+        </v-card-actions>
+        <code>{{error}}</code>
+
+        <v-divider></v-divider>
+
+      </v-card>
+    </v-dialog>
 </v-container>
 </template>
 
@@ -31,6 +64,8 @@ export default {
             topTen: null,
             panel: [false],
             activeVideo: 0,
+            dialog: false,
+            error: null,
         };
     },
     watch:{
@@ -83,9 +118,10 @@ export default {
                 self.topTen[0].active = true;
                 self.currentVideo = self.topTen[0];
             })
-            .catch(function (error) {
+            .catch(function (xhr) {
                 // handle error
-                console.log(error);
+                self.dialog = true;
+                self.error = xhr.response.data.error;
             });
         },
         changeVideo(video, index){
@@ -101,3 +137,11 @@ export default {
     },
 }
 </script>
+
+<style lang="scss">
+    .v-dialog{
+        code{
+            width: 100%;
+        }
+    }
+</style>
