@@ -29,7 +29,7 @@
                         </v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
-                <v-divider></v-divider>
+                <v-divider :class="{barColor: !isHome, 'lighten-3': !isHome}"></v-divider>
             </v-list>
         </v-navigation-drawer>
 
@@ -77,6 +77,9 @@
             ],
         }), 
         computed:{
+            isHome(){
+                return this.$route.name == "home";
+            },
             textColor(){
                 if(this.$route.name == "home"){
                     return 'black--text';
