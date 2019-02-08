@@ -35,7 +35,6 @@ export default {
                     return y0 + (y1 - y0)*((x - x0)/(x1 - x0));
                 }
 
-
                 function generateRandomSample(context, w, h) {	
                     var intensity = [];
                     var factor = h / 50;

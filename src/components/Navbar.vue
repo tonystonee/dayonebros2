@@ -1,6 +1,7 @@
 <template>
     <div>
         <v-navigation-drawer
+            v-if="nav"
             class="nav-drawer lighten-5 "
             :class="navColor"
             v-model="drawer"
@@ -10,7 +11,7 @@
             app
         >
             <v-list dense class="py-0">
-                <v-toolbar flat :color="navColor" class="darken-2 hidden-lg-and-up title-tile d-flex">
+                <v-toolbar flat :color="navColor" class="darken-2 hidden-lg-and-up title-tile">
                     <v-toolbar-side-icon @click.stop="drawer = !drawer" class="mx-1"></v-toolbar-side-icon>
                     <v-icon class="mx-0" :color="iconColor">fas fa-play-circle</v-icon>
                     <v-toolbar-title class="title ml-1 mr-5 align-center ">
@@ -29,7 +30,7 @@
                         </v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
-                <v-divider></v-divider>
+                <v-divider :class="{barColor: !isHome, 'lighten-3': !isHome}"></v-divider>
             </v-list>
         </v-navigation-drawer>
 
@@ -42,7 +43,7 @@
             clipped-left
             app
         >
-            <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+            <v-toolbar-side-icon v-if="nav" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-icon class="ml-2 mr-0 navicon" :color="iconColor">fas fa-play-circle</v-icon>
             <v-toolbar-title class="title ml-2 mr-5 align-center ">
                 <router-link :to="{name: 'home'}" :class="textColor">DayOneBros &nbsp;</router-link>
@@ -69,14 +70,22 @@
                 { icon: 'fas fa-football-ball', text: 'Sports', slug: 'sports' },
                 { icon: 'drive_eta', text: 'Auto', slug: 'auto' },
                 { icon: 'audiotrack', text: 'Music', slug: 'music' },
-                { icon: 'fas fa-film', text: 'Film and Animation', slug: 'film_and_animation' },
+                { icon: 'fas fa-film', text: 'Film and Animation', slug: 'film-and-animation' },
                 { icon: 'videogame_asset', text: 'Gaming', slug: 'gaming' },
                 { icon: 'pets', text: 'Pets', slug: 'pets' },
                 { icon: 'fas fa-flask', text: 'Science', slug: 'science' },
                 { icon: 'fas fa-graduation-cap', text: 'Education', slug: 'education' },
             ],
         }), 
+        
         computed:{
+            nav(){
+                return !(this.$route.name == "terms" || this.$route.name == "copyright" ||
+                this.$route.name == "privacy");
+            },
+            isHome(){
+                return this.$route.name == "home";
+            },
             textColor(){
                 if(this.$route.name == "home"){
                     return 'black--text';
@@ -112,6 +121,7 @@
 .nav-drawer{
 
     .title-tile{
+        display: flex;
         flex-direction: column;
         align-content: center;
         height: 48px;

@@ -1,113 +1,165 @@
 import Vue from 'vue'
+import slugify from 'slugify'
 import Router from 'vue-router'
 import Category from './views/Category'
 import Home from './views/Home'
+import Terms from './views/Terms'
+import Copyright from './views/Copyright'
+import Privacy from '@/views/Privacy'
+import categories from '@/config/categories'
 import colors from 'vuetify/es5/util/colors'
 
-Vue.use(Router)
+Vue.use(Router);
 
-export default new Router({
-  mode: 'history',
+function desc(category){
+  return `The top ${category} videos of the day.`;
+}
+
+function categoryRoute(category){
+  const slug = slugify(category.name);
+  return {
+    path: `/${slug}`,
+    name: category.name,
+    component: Category,
+    props: {
+      categoryId: category.categoryId,
+      primary: category.color,
+    },
+    meta: {
+      title: `DayOneBros: ${category.name}`,
+      metaTags: [
+        {
+          name: 'description',
+          content: desc(category.name),
+        }
+      ],
+    },
+  };
+}
+
+const categoryRoutes = [];
+
+categories.forEach((category)=>{
+  categoryRoutes.push(categoryRoute(category));
+});
+
+const routes = [
+  {
+    path: '/',
+    name: 'home',
+    component: Home,
+    props: {
+      primary: colors.red,
+    },
+    meta: {
+      title: 'Home - Day One Bros',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Bored? Browse the top ten videos of the day at dayonebros.com.',
+        }
+      ],
+    },
+  },
+  ...categoryRoutes,
+  {
+    path: '/terms',
+    name: 'terms',
+    component: Terms,
+    props: {
+      primary: colors.red,
+    },
+    meta: {
+      title: 'Day One Bros - terms of service',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Fake terms of service',
+        }
+      ],
+    },
+  },
+  {
+    path: '/copyright',
+    name: 'copyright',
+    component: Copyright,
+    props: {
+      primary: colors.red,
+    },
+    meta: {
+      title: 'Day One Bros - copyright',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Fake copyright  ',
+        }
+      ],
+    },
+  },
+  {
+    path: '/privacy',
+    name: 'privacy',
+    component: Privacy,
+    props: {
+      primary: colors.red,
+    },
+    meta: {
+      title: 'Day One Bros - privacy',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Fake privacy',
+        }
+      ],
+    },
+  },
+  { path: '*', redirect: '/' }
+];
+
+console.log(routes)
+
+const router = new Router({
+  routes,
   base: process.env.BASE_URL,
-  routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home,
-      props: {
-        primary: colors.red,
-      },    
-    },
-    {
-      path: '/auto',
-      name: 'Auto',
-      component: Category,
-      props: {
-        categoryId: 2,
-        primary: colors.red,
-      },
-    },
-    {
-      path: '/comedy',
-      name: 'Comedy',
-      component: Category,
-      props: {
-        categoryId: 23,
-        primary: colors.blue,
-      },
-    },
-    {
-      path: '/education',
-      name: 'Education',
-      component: Category,
-      props: {
-        categoryId: 27,
-        primary: colors.yellow,
-      },
-    },
-    {
-      path: '/film_and_animation',
-      name: 'Film and Animation',
-      component: Category,
-      props: {
-        categoryId: 1,
-        primary: colors.pink,
-      },
-    },
-    {
-      path: '/gaming',
-      name: 'Gaming',
-      component: Category,
-      props: {
-        categoryId: 20,
-        primary: colors.red,
-      },
-    },
-    {
-      path: '/sports',
-      name: 'Sports',
-      component: Category,
-      props: {
-        categoryId: 17,
-        primary: colors.green,
-      },
-    },
-    {
-      path: '/music',
-      name: 'Music',
-      component: Category,
-      props: {
-        categoryId: 10,
-        primary: colors.blue,
-      },
-    },
-    {
-      path: '/news',
-      name: 'News',
-      component: Category,
-      props: {
-        categoryId: 25,
-        primary: colors.lightBlue,
-      },
-    },
-    {
-      path: '/pets',
-      name: 'Pets',
-      component: Category,
-      props: {
-        categoryId: 15,
-        primary: colors.lightGreen,
-      },
-    },
-    {
-      path: '/Science',
-      name: 'Science',
-      component: Category,
-      props: {
-        categoryId: 28,
-        primary: colors.green,
-      },
-    },
-    { path: '*', redirect: '/' }
-  ]
-})
+  mode: 'history'
+});
+
+// This callback runs before every route change, including on page load.
+router.beforeEach((to, from, next) => {
+  // This goes through the matched routes from last to first, finding the closest route with a title.
+  // eg. if we have /some/deep/nested/route and /some, /deep, and /nested have titles, nested's will be chosen.
+  const nearestWithTitle = to.matched.slice().reverse().find(r => r.meta && r.meta.title);
+
+  // Find the nearest route element with meta tags.
+  const nearestWithMeta = to.matched.slice().reverse().find(r => r.meta && r.meta.metaTags);
+  const previousNearestWithMeta = from.matched.slice().reverse().find(r => r.meta && r.meta.metaTags);
+
+  // If a route with a title was found, set the document (page) title to that value.
+  if(nearestWithTitle) document.title = nearestWithTitle.meta.title;
+
+  // Remove any stale meta tags from the document using the key attribute we set below.
+  Array.from(document.querySelectorAll('[data-vue-router-controlled]')).map(el => el.parentNode.removeChild(el));
+
+  // Skip rendering meta tags if there are none.
+  if(!nearestWithMeta) return next();
+
+  // Turn the meta tag definitions into actual elements in the head.
+  nearestWithMeta.meta.metaTags.map(tagDef => {
+    const tag = document.createElement('meta');
+
+    Object.keys(tagDef).forEach(key => {
+      tag.setAttribute(key, tagDef[key]);
+    });
+
+    // We use this to track which meta tags we create, so we don't interfere with other ones.
+    tag.setAttribute('data-vue-router-controlled', '');
+
+    return tag;
+  })
+  // Add the meta tags to the document head.
+  .forEach(tag => document.head.appendChild(tag));
+
+  next();
+});
+
+export default router;

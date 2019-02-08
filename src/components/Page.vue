@@ -1,5 +1,6 @@
 <template>
 <v-container fluid>
+    <error-dialog :error="error" :dialog="dialog"></error-dialog>
     <v-layout row wrap>
         <v-flex xs12 md8 :class="{'pr-4': $vuetify.breakpoint.mdAndUp}">
           <player @random="random" :video="currentVideo"/>  
@@ -13,6 +14,7 @@
 
 <script>
 import axios from 'axios';
+import ErrorDialog from '@/components/ErrorDialog'
 import Player from '@/components/Player' 
 import TopTenBar from '@/components/TopTenBar' 
 
@@ -31,6 +33,8 @@ export default {
             topTen: null,
             panel: [false],
             activeVideo: 0,
+            dialog: false,
+            error: null,
         };
     },
     watch:{
@@ -42,6 +46,7 @@ export default {
         },
     },
     components: {
+        ErrorDialog,
         Player,
         TopTenBar,
     },
@@ -49,6 +54,13 @@ export default {
         $_selectFrom(lowerValue, upperValue){
             var choices = upperValue-lowerValue + 1;
             return Math.floor(Math.random() * choices +lowerValue);
+        },
+        $_toTop(){
+            this.$vuetify.goTo(0, {
+                duration: 220,
+                offset: 0,
+                easing: 'linear',
+            });
         },
         random(){
             // remove active video in top ten
@@ -76,9 +88,10 @@ export default {
                 self.topTen[0].active = true;
                 self.currentVideo = self.topTen[0];
             })
-            .catch(function (error) {
+            .catch(function (xhr) {
                 // handle error
-                console.log(error);
+                self.dialog = true;
+                self.error = xhr.response.data.error;
             });
         },
         changeVideo(video, index){
@@ -87,9 +100,18 @@ export default {
             }
             video.active = true;
             this.activeVideo = index;
-
             this.currentVideo = video;
+
+            this.$_toTop();
         },
     },
 }
 </script>
+
+<style lang="scss">
+    .v-dialog{
+        code{
+            width: 100%;
+        }
+    }
+</style>

@@ -1,6 +1,5 @@
-# dayonebros.com
-
-v2.0
+# dayonebros
+v2.1
 
 ## Project setup
 ```

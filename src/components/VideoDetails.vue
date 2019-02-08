@@ -1,12 +1,13 @@
 <template>
-<div>
+<div class="videoDetails">
     <v-scale-transition>
             <v-expansion-panel v-if="video"
                 v-model="panel"
                 expand
             >
-                <v-layout>
-                    <h2 class="pa-3">{{video.title}}</h2>
+                <v-layout column class="pt-3 px-3 pb-2">
+                    <h2 class="title font-weight-regular">{{video.title}}</h2>
+                    <h3 class="subheading grey--text text--darken-3">{{video.channelTitle}}</h3>
                 </v-layout>
                 <v-expansion-panel-content>
                     <div slot="header" class="font-weight-bold">
@@ -16,8 +17,8 @@
                         </span>
                     </div>
                     <v-card>
-                        <v-card-text>
-                            {{video.description}}
+                        <v-card-text class="body-1 pt-0">
+                            <pre>{{video.description}}</pre>
                         </v-card-text>
                     </v-card>
                 </v-expansion-panel-content>
@@ -48,3 +49,11 @@
         },
     }
 </script>
+
+<style lang="scss">
+    .videoDetails{
+        pre{
+            white-space: pre-wrap;
+        }
+    }
+</style>
