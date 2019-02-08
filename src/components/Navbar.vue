@@ -69,7 +69,7 @@
                 { icon: 'fas fa-football-ball', text: 'Sports', slug: 'sports' },
                 { icon: 'drive_eta', text: 'Auto', slug: 'auto' },
                 { icon: 'audiotrack', text: 'Music', slug: 'music' },
-                { icon: 'fas fa-film', text: 'Film and Animation', slug: 'film_and_animation' },
+                { icon: 'fas fa-film', text: 'Film and Animation', slug: 'film-and-animation' },
                 { icon: 'videogame_asset', text: 'Gaming', slug: 'gaming' },
                 { icon: 'pets', text: 'Pets', slug: 'pets' },
                 { icon: 'fas fa-flask', text: 'Science', slug: 'science' },
