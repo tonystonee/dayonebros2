@@ -19,18 +19,19 @@
                         <div slot="activator">
                             <v-list-tile
                                 :key="item.title"
-                                class="pa-2"
+                                class="py-2 px-0"
                                 @click="selectVideo(item, index)"
                                 :class="{
                                     blue: item.active,
                                     'lighten-5': item.active,
                                 }"
                             >
-                                <v-img min-width="100px" left class="mr-2" :src="item.thumbnails.medium.url"/>
+
+                                <img class="mr-2" :src="item.thumbnails.medium.url" alt="">
 
                                 <v-list-tile-content>
-                                    <v-list-tile-title v-html="item.title"></v-list-tile-title>
-                                    <v-list-tile-sub-title v-html="item.channelTitle"></v-list-tile-sub-title>
+                                    <v-list-tile-title class="body-2">{{item.title}}</v-list-tile-title>
+                                    <v-list-tile-sub-title class="caption">{{item.channelTitle}}</v-list-tile-sub-title>
                                 </v-list-tile-content>
                             </v-list-tile>
                         </div>
@@ -75,15 +76,22 @@
                 this.$emit('selectVideo', item, index);
             },
         },
-        mounted(){
-            console.log(this.videoList)
-        }
     }
 </script>
  <style lang="scss">
     .top-ten{
-        .v-list--two-line .v-list__tile {
+       .v-list__tile {
+            align-items: flex-start;
             height: auto;
+            padding-left: 10px;
+            padding-right: 10px;
+            img{
+                width: 20%;
+                min-width: 100px;
+            }
+            .v-list__tile__content{
+                justify-content: flex-start;
+            }
         }
         [role="listitem"]{
             cursor: pointer;

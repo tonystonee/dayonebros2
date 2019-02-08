@@ -7,7 +7,7 @@
             >
                 <v-layout column class="pt-3 px-3 pb-2">
                     <h2 class="title font-weight-regular">{{video.title}}</h2>
-                    <h3 class="subheading">{{video.channelTitle}}</h3>
+                    <h3 class="subheading grey--text text--darken-3">{{video.channelTitle}}</h3>
                 </v-layout>
                 <v-expansion-panel-content>
                     <div slot="header" class="font-weight-bold">
