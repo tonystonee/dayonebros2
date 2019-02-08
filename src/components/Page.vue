@@ -50,6 +50,13 @@ export default {
             var choices = upperValue-lowerValue + 1;
             return Math.floor(Math.random() * choices +lowerValue);
         },
+        $_toTop(){
+            this.$vuetify.goTo(0, {
+                duration: 220,
+                offset: 0,
+                easing: 'linear',
+            });
+        },
         random(){
             // remove active video in top ten
             if(this.activeVideo > -1){
@@ -87,8 +94,9 @@ export default {
             }
             video.active = true;
             this.activeVideo = index;
-
             this.currentVideo = video;
+
+            this.$_toTop();
         },
     },
 }
