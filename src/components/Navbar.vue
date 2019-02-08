@@ -10,7 +10,7 @@
             app
         >
             <v-list dense class="py-0">
-                <v-toolbar flat :color="navColor" class="darken-2 hidden-lg-and-up title-tile d-flex">
+                <v-toolbar flat :color="navColor" class="darken-2 hidden-lg-and-up title-tile">
                     <v-toolbar-side-icon @click.stop="drawer = !drawer" class="mx-1"></v-toolbar-side-icon>
                     <v-icon class="mx-0" :color="iconColor">fas fa-play-circle</v-icon>
                     <v-toolbar-title class="title ml-1 mr-5 align-center ">
@@ -112,6 +112,7 @@
 .nav-drawer{
 
     .title-tile{
+        display: flex;
         flex-direction: column;
         align-content: center;
         height: 48px;
