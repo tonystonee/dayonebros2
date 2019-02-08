@@ -17,7 +17,7 @@
                         </span>
                     </div>
                     <v-card>
-                        <v-card-text class="body-1">
+                        <v-card-text class="body-1 pt-0">
                             <pre>{{video.description}}</pre>
                         </v-card-text>
                     </v-card>
