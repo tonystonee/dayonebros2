@@ -3,6 +3,9 @@ import slugify from 'slugify'
 import Router from 'vue-router'
 import Category from './views/Category'
 import Home from './views/Home'
+import Terms from './views/Terms'
+import Copyright from './views/Copyright'
+import Privacy from '@/views/Privacy'
 import categories from '@/config/categories'
 import colors from 'vuetify/es5/util/colors'
 
@@ -59,6 +62,57 @@ const routes = [
     },
   },
   ...categoryRoutes,
+  {
+    path: '/terms',
+    name: 'terms',
+    component: Terms,
+    props: {
+      primary: colors.red,
+    },
+    meta: {
+      title: 'Day One Bros - terms of service',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Fake terms of service',
+        }
+      ],
+    },
+  },
+  {
+    path: '/copyright',
+    name: 'copyright',
+    component: Copyright,
+    props: {
+      primary: colors.red,
+    },
+    meta: {
+      title: 'Day One Bros - copyright',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Fake copyright  ',
+        }
+      ],
+    },
+  },
+  {
+    path: '/privacy',
+    name: 'privacy',
+    component: Privacy,
+    props: {
+      primary: colors.red,
+    },
+    meta: {
+      title: 'Day One Bros - privacy',
+      metaTags: [
+        {
+          name: 'description',
+          content: 'Fake privacy',
+        }
+      ],
+    },
+  },
   { path: '*', redirect: '/' }
 ];
 

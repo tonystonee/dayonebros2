@@ -1,5 +1,6 @@
 <template>
 <v-container fluid>
+    <error-dialog :error="error" :dialog="dialog"></error-dialog>
     <v-layout row wrap>
         <v-flex xs12 md8 :class="{'pr-4': $vuetify.breakpoint.mdAndUp}">
           <player @random="random" :video="currentVideo"/>  
@@ -8,44 +9,12 @@
             <top-ten-bar @selectVideo="changeVideo" :activeVideo="activeVideo" :videoList="topTen"/>
         </v-flex>
     </v-layout>
-
-<v-dialog
-    class="error-dialog"
-    v-model="dialog"
-    width="500"
-    >
-
-      <v-card>
-        <v-card-title
-          class="headline grey lighten-2"
-          primary-title
-        >
-          Error
-        </v-card-title>
-
-        <v-card-text>We're sorry, but an error has occured. Please contact the adminstrator to address the issue.
-        </v-card-text>
-        <v-card-actions>
-            <v-spacer></v-spacer>
-          <v-btn
-            color="primary"
-            flat
-            @click="dialog = false"
-          >
-            OKAY
-          </v-btn>
-        </v-card-actions>
-        <code>{{error}}</code>
-
-        <v-divider></v-divider>
-
-      </v-card>
-    </v-dialog>
 </v-container>
 </template>
 
 <script>
 import axios from 'axios';
+import ErrorDialog from '@/components/ErrorDialog'
 import Player from '@/components/Player' 
 import TopTenBar from '@/components/TopTenBar' 
 
@@ -77,6 +46,7 @@ export default {
         },
     },
     components: {
+        ErrorDialog,
         Player,
         TopTenBar,
     },

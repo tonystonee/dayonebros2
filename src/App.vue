@@ -4,15 +4,18 @@
     <v-content class="main-wrapper">
       <router-view></router-view>
     </v-content>
+    <app-footer/>
   </v-app>
 </template>
 
 <script>
+import AppFooter from '@/components/AppFooter'
 import Navbar from './components/Navbar'
 import colors from 'vuetify/lib/util/colors';
 export default {
   name: 'App',
   components: {
+    AppFooter,
     Navbar,
   },
   data () {
@@ -20,14 +23,14 @@ export default {
       //
     }
   },
-    watch: {
-      $route: {
-          handler(){
-            this.$vuetify.theme.barColor = this.$route.matched[0].props.default.primary;
-          },
-          immediate: true,
-      },
-    }
+  watch: {
+    $route: {
+        handler(){
+          this.$vuetify.theme.barColor = this.$route.matched[0].props.default.primary;
+        },
+        immediate: true,
+    },
+  }
 }
 </script>
 

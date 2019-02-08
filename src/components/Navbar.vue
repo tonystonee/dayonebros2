@@ -1,6 +1,7 @@
 <template>
     <div>
         <v-navigation-drawer
+            v-if="nav"
             class="nav-drawer lighten-5 "
             :class="navColor"
             v-model="drawer"
@@ -42,7 +43,7 @@
             clipped-left
             app
         >
-            <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+            <v-toolbar-side-icon v-if="nav" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-icon class="ml-2 mr-0 navicon" :color="iconColor">fas fa-play-circle</v-icon>
             <v-toolbar-title class="title ml-2 mr-5 align-center ">
                 <router-link :to="{name: 'home'}" :class="textColor">DayOneBros &nbsp;</router-link>
@@ -76,7 +77,12 @@
                 { icon: 'fas fa-graduation-cap', text: 'Education', slug: 'education' },
             ],
         }), 
+        
         computed:{
+            nav(){
+                return !(this.$route.name == "terms" || this.$route.name == "copyright" ||
+                this.$route.name == "privacy");
+            },
             isHome(){
                 return this.$route.name == "home";
             },
