@@ -1,6 +1,6 @@
 {
-  "name": "dayonebros2",
-  "version": "0.1.0",
+  "name": "dayonebros",
+  "version": "1.1.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
