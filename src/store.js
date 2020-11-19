@@ -5,7 +5,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    key: 'AIzaSyA2surjYpInK_ft0gWD0R__XQ05zbaptCQ',
+    key: 'AIzaSyA8jagLA7xPLvibUtFPfHWpAXNyIK2fUMs',
     // Search endpoint
     categoryEndpoint: 'https://www.googleapis.com/youtube/v3/search',
   },
